@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">DataAgent</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_header_server">Collector and upload server</string>
+    <string name="pref_header_thresholds">Sensor reading Thresholds</string>
+    <string name="pref_description_enable_upload">Enables uploading of data to server</string>
+    <string name="pref_title_enable_upload">Enable upload</string>
+    <string name="pref_default_enable_upload">true</string>
+    <string name="pref_default_host_name">foo.com</string>
+    <string name="pref_title_host_name">Host name</string>
+    <string name="pref_default_host_port">8080</string>
+    <string name="pref_host_name">Host name</string>
+    <string name="pref_host_port">Server port</string>
+    <string name="pref_title_viscosity">Viscosity</string>
+    <string name="pref_title_temperature">Temperature</string>
+    <string name="enable_upload">enable_upload</string>
+    <string name="pref_default_sensor_name">sensor</string>
+    <string name="pref_sensor_name">Sensor name</string>
+    <string name="example_sensor">abc</string>
+    <string name="example_host">pref_host</string>
+    <string name="example_port">port</string>
+    <string name="pref_key_sensor">Sensor name</string>
+    <string name="pref_key_host">Host name</string>
+    <string name="pref_key_port">Port</string>
+    <string name="pref_host">Host name</string>
+    <string name="pref_key_viscosity">key_viscosity</string>
+    <string name="pref_key_temp">key_temp</string>
+    <string name="pref_sensor">Host</string>
+    <string name="pref_key_humidity">key_humidity</string>
+    <string name="pref_title_humidity">Humidity</string>
+</resources>

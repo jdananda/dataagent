@@ -1,0 +1,22 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- NOTE: EditTextPreference accepts EditText attributes. -->
+    <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
+    <SwitchPreference
+        android:defaultValue="@string/pref_default_enable_upload"
+        android:key="@string/enable_upload"
+        android:summary="@string/pref_description_enable_upload"
+        android:id="@+id/enable_upload"
+        android:title="@string/pref_title_enable_upload" />
+    <EditTextPreference
+        android:defaultValue="@string/pref_default_host_name"
+        android:inputType="textUri"
+        android:key="@string/pref_key_host"
+        android:title="@string/pref_host" />
+    <EditTextPreference
+        android:defaultValue="@string/pref_default_host_port"
+        android:inputType="number"
+        android:key="@string/pref_key_port"
+        android:title="@string/pref_host_port" />
+</PreferenceScreen>
+

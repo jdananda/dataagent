@@ -1,0 +1,20 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:defaultValue="10,30"
+        android:inputType="text"
+        android:key="@string/pref_key_viscosity"
+        android:title="@string/pref_title_viscosity" />
+
+    <EditTextPreference
+        android:defaultValue="50,70"
+        android:inputType="text"
+        android:key="@string/pref_key_temp"
+        android:title="@string/pref_title_temperature" />
+
+    <EditTextPreference
+        android:defaultValue="50,70"
+        android:inputType="text"
+        android:key="@string/pref_key_humidity"
+        android:title="@string/pref_title_humidity" />
+</PreferenceScreen>
