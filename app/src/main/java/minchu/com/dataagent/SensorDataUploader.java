@@ -32,11 +32,11 @@ public class SensorDataUploader {
 
     private void postData(byte[] bytes, long timestamp) throws Exception {
         StringBuilder params = new StringBuilder("bytes=");
-        params.append(Base64.encode(bytes, Base64.DEFAULT));
+        params.append(new String(Base64.encode(bytes, Base64.DEFAULT)));
         params.append("&timestamp=");
         params.append(URLEncoder.encode(String.valueOf(timestamp), "UTF-8"));
 
-        String url = "http://" + hostName + ":" + port + "/" + REST_URL_SUFFIX + "?" + params.toString();
+        String url = "http://" + hostName + ":" + port + REST_URL_SUFFIX + "?" + params.toString();
         URL obj = new URL(url);
         HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 
