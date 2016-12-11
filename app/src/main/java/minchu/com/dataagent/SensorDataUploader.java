@@ -13,7 +13,7 @@ import javax.net.ssl.HttpsURLConnection;
  * Created by Deva on 11/20/2016.
  */
 public class SensorDataUploader {
-    private static final String REST_URL_SUFFIX = "/REST/sensordata";
+    private static final String REST_URL_SUFFIX = "/sensor.php";
     private final String hostName;
     private final String port;
 

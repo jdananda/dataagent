@@ -32,8 +32,8 @@ public class DataTransferService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        String hostName = "sundeep.com";
-        String port = "8080";
+        String hostName = "www.coldpuck.com";
+        String port = "80";
         final SensorDataUploader sensorUpdateLoader = new SensorDataUploader(hostName, port);
         final BluetoothDataReader reader = new BluetoothDataReader(getApplicationContext());
         Thread readerThread = new Thread() {
