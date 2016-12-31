@@ -47,6 +47,7 @@ public class BluetoothDataReader {
         BluetoothLeScanner scanner = btAdapter.getBluetoothLeScanner();
         ScanSettings settings = new ScanSettings.Builder()
                 .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY)
+                .setCallbackType(ScanSettings.CALLBACK_TYPE_ALL_MATCHES)
                 .build();
         scanner.startScan(Collections.<ScanFilter>emptyList(), settings, new LimitedScanRecordReader(sensorDataUploader, count, scanner));
     }
@@ -81,16 +82,18 @@ public class BluetoothDataReader {
 
         @Override
         public void onScanResult(int callbackType, ScanResult result) {
-            if(scanRecordRead++ < limit) {
+//            if(scanRecordRead++ < limit) {
+            if(result.getDevice().getAddress().equals("26:50:26:50:26:50")) {
                 long timestamp = System.currentTimeMillis() -
                         SystemClock.elapsedRealtime() +
                         result.getTimestampNanos() / 1000000;
                 byte[] rawBytes = result.getScanRecord().getBytes();
                 Log.i(DataTransferService.class.getName(), "Raw bytes: " + byteArrayToHex(rawBytes));
                 sensorDataUploader.upload(timestamp, rawBytes);
-            }else {
-                scanner.stopScan(this);
             }
+//            }else {
+//                scanner.stopScan(this);
+//            }
         }
         public String byteArrayToHex(byte[] a) {
             StringBuilder sb = new StringBuilder(a.length * 2);

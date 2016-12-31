@@ -7,13 +7,14 @@ import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLEncoder;
 
-import javax.net.ssl.HttpsURLConnection;
+import java.net.HttpURLConnection;
+import java.util.concurrent.Executors;
 
 /**
  * Created by Deva on 11/20/2016.
  */
 public class SensorDataUploader {
-    private static final String REST_URL_SUFFIX = "/sensor.php";
+    private static final String REST_URL_SUFFIX = "/deva.php";
     private final String hostName;
     private final String port;
 
@@ -22,12 +23,18 @@ public class SensorDataUploader {
         this.port = port;
     }
 
-    public void upload(long timestamp, byte[] rawBytes) {
-        try {
-            postData(rawBytes, timestamp);
-        } catch (Exception e) {
-            Log.i(SensorDataUploader.class.getName(), "Unable to upload data");
-        }
+    public void upload(final long timestamp, final byte[] rawBytes) {
+        Executors.newSingleThreadExecutor().submit(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    postData(rawBytes, timestamp);
+                } catch (Exception e) {
+                    Log.i(SensorDataUploader.class.getName(), "Unable to upload data");
+                }
+            }
+        });
+
     }
 
     private void postData(byte[] bytes, long timestamp) throws Exception {
@@ -38,7 +45,7 @@ public class SensorDataUploader {
 
         String url = "http://" + hostName + ":" + port + REST_URL_SUFFIX + "?" + params.toString();
         URL obj = new URL(url);
-        HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
         con.setRequestMethod("POST");
         con.setRequestProperty("Accept-Language", "UTF-8");
