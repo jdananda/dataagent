@@ -41,16 +41,16 @@ public class AgentSettingsActivity extends AppCompatPreferenceActivity{
             String stringValue = value.toString();
             preference.setSummary(stringValue);
             if(preference instanceof SwitchPreference) {
-                if(preference.getKey().equals("enable_upload")) {
-                    Boolean boolValue = (Boolean)value;
-                    Intent serviceIntent = new Intent(preference.getContext(), minchu.com.dataagent.DataTransferService.class);
-                    serviceIntent.setPackage("minchu.com.dataagent");
-                    if(boolValue) {
-                        preference.getContext().startService(serviceIntent);
-                    } else {
-                        preference.getContext().stopService(serviceIntent);
-                    }
-                }
+//                if(preference.getKey().equals("enable_upload")) {
+//                    Boolean boolValue = (Boolean)value;
+//                    Intent serviceIntent = new Intent(preference.getContext(), minchu.com.dataagent.DataTransferService.class);
+//                    serviceIntent.setPackage("minchu.com.dataagent");
+//                    if(boolValue) {
+//                        preference.getContext().startService(serviceIntent);
+//                    } else {
+//                        preference.getContext().stopService(serviceIntent);
+//                    }
+//                }
             }
             return true;
         }
@@ -90,6 +90,9 @@ public class AgentSettingsActivity extends AppCompatPreferenceActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setupActionBar();
+        Intent serviceIntent = new Intent(this, minchu.com.dataagent.DataTransferService.class);
+        serviceIntent.setPackage("minchu.com.dataagent");
+        startService(serviceIntent);
     }
 
     /**

@@ -14,6 +14,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -46,10 +47,10 @@ public class BluetoothDataReader {
 
         BluetoothLeScanner scanner = btAdapter.getBluetoothLeScanner();
         ScanSettings settings = new ScanSettings.Builder()
-                .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY)
-                .setCallbackType(ScanSettings.CALLBACK_TYPE_ALL_MATCHES)
+                .setScanMode(ScanSettings.SCAN_MODE_BALANCED)
+//                .setCallbackType(ScanSettings.CALLBACK_TYPE_ALL_MATCHES)
                 .build();
-        scanner.startScan(Collections.<ScanFilter>emptyList(), settings, new LimitedScanRecordReader(sensorDataUploader, count, scanner));
+        scanner.startScan(Arrays.asList(new ScanFilter.Builder().setDeviceAddress("26:50:26:50:26:50").build()), settings, new LimitedScanRecordReader(sensorDataUploader, count, scanner));
     }
 
     @Nullable
